@@ -7,4 +7,4 @@ We encrypt the message using a key of your choice or the default key. We encode 
 image using steganography techniques. The encoded image can be downloaded and sent to the recipient. 
 The recipient can extract the message from the image by inserting the key.
 
-Website: https://stegacrypt.herokuapp.com/
+Website: stegacrypt.herokuapp.com
