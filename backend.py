@@ -12,6 +12,7 @@ def encrypt(key, msg):
         msg_c = ord(c)
         encryped.append(chr((msg_c + key_c) % 127))
     return ''.join(encryped)
+
 def genData(data): 
 		
 	# list of binary codes 
@@ -97,6 +98,7 @@ def decrypt(key, encryped):
         enc_c = ord(c)
         msg.append(chr((enc_c - key_c) % 127))
     return ''.join(msg)
+
 def decode(image): 
 	
 	data = '' 
