@@ -86,7 +86,7 @@ def encode(encrypted,image):
 	newimg = image.copy() 
 	encode_enc(newimg, data)
 	UPLOAD_FOLDER = 'static/temp'
-	name = str(random.randint(1,100)) + "encoded_img.png"
+	name = str(random.randint(1,10)) + "encoded_img.png"
 	app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 	newimg.save(os.path.join(app.config['UPLOAD_FOLDER'], name))
 	return name
