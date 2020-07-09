@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request
 from PIL import Image
 import os
+import random
 
 app = Flask(__name__)
 
@@ -84,9 +85,11 @@ def encode(encrypted,image):
 		
 	newimg = image.copy() 
 	encode_enc(newimg, data)
-	UPLOAD_FOLDER = 'static'
+	UPLOAD_FOLDER = 'static/temp'
+	name = str(random.randint(1,100)) + "encoded_img.png"
 	app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-	newimg.save(os.path.join(app.config['UPLOAD_FOLDER'], "encoded_img.png"))
+	newimg.save(os.path.join(app.config['UPLOAD_FOLDER'], name))
+	return name
 	
 '''encryption process ends here'''
 
@@ -98,7 +101,6 @@ def decrypt(key, encryped):
         enc_c = ord(c)
         msg.append(chr((enc_c - key_c) % 127))
     return ''.join(msg)
-
 def decode(image): 
 	
 	data = '' 
@@ -148,8 +150,8 @@ def en_complete():
         if key_received == "":
             key_received = 'msritcodes'
         encrypted_msg = encrypt(key_received, msg_received)
-        encode(encrypted_msg,image)
-        new_img = "encoded_img.png"
+        name = encode(encrypted_msg,image)
+        new_img = name
         return render_template('encrypt_comp.html', msg = msg_received , key = encrypted_msg, image_name = new_img)
 @app.route('/decryption')
 def dec():
