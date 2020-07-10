@@ -48,7 +48,7 @@
         <small id="ImageInfo" class="form-text text-muted">Encoded image is displayed below. The image may be distorted due 
             to the browser dimensions. Original dimensions will be maintained after downloading the image.
         </small><br>
-        <img src="{{ url_for('static', filename = 'temp/' + image_name) }}" style="width: 100%;"><br><br>
+        <img src="{{ url_for('static', filename = 'temp/' + image_name) }}" style="width: 100%; height: 500px"><br><br>
         <a href="{{ url_for('static', filename = 'temp/' + image_name) }}" download="encoded_img.png">
             <button type="button" class="btn btn-info">Download</button>
         </a>
