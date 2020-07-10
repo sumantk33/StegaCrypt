@@ -43,7 +43,8 @@ def modPix(pix, data):
 					pix[j] -= 1
 					
 			elif (datalist[i][j] == '1') and (pix[j] % 2 == 0): 
-				pix[j] -= 1
+				if pix[j]%2==0:
+					pix[j]+=1
 				
 		# Eigh^th pixel of every set tells 
 		# whether to stop ot read further. 
@@ -51,10 +52,16 @@ def modPix(pix, data):
 		# message is over. 
 		if (i == lendata - 1): 
 			if (pix[-1] % 2 == 0): 
-				pix[-1] -= 1
+				if pix[-1]==0:
+					pix[-1]+=1
+				else:
+					pix[-1]-=1
 		else: 
 			if (pix[-1] % 2 != 0): 
-				pix[-1] -= 1
+				if pix[-1]==0:
+					pix[-1]+=1
+				else:
+					pix[-1]-=1
 
 		pix = tuple(pix) 
 		yield pix[0:3] 
