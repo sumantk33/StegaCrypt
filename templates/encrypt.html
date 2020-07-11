@@ -6,21 +6,26 @@
     body {
         color: white;
     }
+
     .jumbotron {
         color: black;
     }
+
     .jumbotron h1 {
         text-align: center;
         font-family: 'PT Serif', serif;
     }
+
     .btn-primary {
         margin-right: 30px;
     }
+
     .btn {
         width: 180px;
         font-size: 20px;
         border-radius: 5px;
     }
+
     .jumbotron label {
         font-size: 17px;
         font-weight: bold;
@@ -55,46 +60,21 @@
             </div>
             <div class="form-group">
                 <label for="message">Enter the message:-</label>
-                <textarea class="form-control" id="text1" name="content" rows="5" autocomplete="off" required></textarea>
+                <textarea class="form-control" id="text1" name="content" rows="5" autocomplete="off"
+                    required></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Upload the image:-</label>
-                <input type="file" class="form-control-file" id="fileUpload" name="file" accept="image/*" onchange="return Upload()" required>
+                <input type="file" class="form-control-file" id="fileUpload" name="file" accept="image/*"
+                    onchange="return Upload()" required>
                 <small id="emailHelp" class="form-text text-muted">Image in which data needs to be encoded.</small><br>
             </div>
             <div class="alert alert-danger" role="alert" id="alert" style="text-align: center; display: none;">
                 Text is too lengthy to be encoded. Please choose a higher resolution image.
-              </div>
+            </div>
             <div style="text-align: center;">
                 <button type="button" id="butt1" class="btn btn-primary">Submit</button>
             </div>
-            <script type="text/javascript">
-                document.getElementById("butt1").onclick = function () {
-                    location.href = "/en_complete";
-                };
-                function Upload() {
-                    var fileUpload = document.getElementById("fileUpload");
-                    var st = document.getElementById("text1").value.length;
-                    var reader = new FileReader();
-                    reader.readAsDataURL(fileUpload.files[0]);
-                    reader.onload = function (e) {
-                        var image = new Image();
-                        image.src = e.target.result;
-
-                        image.onload = function () {
-                            var height = this.height;
-                            var width = this.width;
-                            var alert = document.getElementById("alert");
-                            if ((height * width / 3) < st) {
-                                alert.style.display = "block";
-                            }
-                            else{
-                                alert.style.display = "none";
-                            }
-                        };
-                    }
-                }
-            </script>
         </form>
     </div>
 </div>
@@ -103,6 +83,31 @@
         var chkYes = document.getElementById("Custom");
         var dvtext = document.getElementById("dvtext");
         dvtext.style.display = chkYes.checked ? "block" : "none";
+    }
+    document.getElementById("butt1").onclick = function () {
+        location.href = "/en_complete";
+    };
+    function Upload() {
+        var fileUpload = document.getElementById("fileUpload");
+        var st = document.getElementById("text1").value.length;
+        var reader = new FileReader();
+        reader.readAsDataURL(fileUpload.files[0]);
+        reader.onload = function (e) {
+            var image = new Image();
+            image.src = e.target.result;
+
+            image.onload = function () {
+                var height = this.height;
+                var width = this.width;
+                var alert = document.getElementById("alert");
+                if ((height * width / 3) < st) {
+                    alert.style.display = "block";
+                }
+                else {
+                    alert.style.display = "none";
+                }
+            };
+        }
     }
 </script>
 {% endblock %}
