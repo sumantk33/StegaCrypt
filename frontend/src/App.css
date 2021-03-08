@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap");
 
 body {
   background: url(assets/base.jpg) no-repeat center center fixed;
@@ -12,7 +13,7 @@ hr {
   background-color: #635c5c;
   height: 1px;
   border: none;
-  opacity: 0.35;
+  opacity: 0.5;
 }
 
 .navbar {
@@ -26,4 +27,23 @@ hr {
 
 .options {
   font-size: 18px;
+}
+
+.formJumbo {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #e9ecef;
+  color: #000;
+  padding: 4% 0 1% 0;
+  border-radius: 5px;
+}
+
+.formJumbo h1 {
+  text-align: center;
+  font-family: "PT Serif", serif;
+}
+
+.holder {
+  width: 60%;
+  margin: 4% auto;
 }
