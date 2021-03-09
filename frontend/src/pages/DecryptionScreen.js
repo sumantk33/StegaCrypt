@@ -1,41 +1,16 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Radio, RadioGroup } from "react-radio-group";
+import "./styles/DecryptionScreen.css";
 
-import "./styles/EncryptionScreen.css";
-
-const EncryptionScreen = () => {
+const DecryptionScreen = () => {
   const [isCustom, setIsCustom] = useState(false);
-  const [message, setMessage] = useState("");
   const [key, setKey] = useState("");
 
-  const uploadImageHandler = (e) => {
-    var reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = function (e) {
-      var image = new Image();
-      image.src = e.target.result;
-
-      image.onload = function () {
-        var height = this.height;
-        var width = this.width;
-        var alert = document.getElementById("alert");
-        if ((height * width) / 3 < message.length) {
-          alert.style.display = "block";
-        } else {
-          alert.style.display = "none";
-        }
-      };
-    };
-  };
-
-  const handle = async () => {
-    console.log(message);
-  };
+  const handle = () => {};
 
   return (
     <div className="formJumbo">
-      <h1 className="display-4">Encryption</h1>
+      <h1 className="display-4">Decryption</h1>
       <div className="holder">
         <div className="keys">
           <label style={{ paddingRight: "1em" }}>Key:- </label>
@@ -78,17 +53,6 @@ const EncryptionScreen = () => {
           <></>
         )}
         <div className="form-group">
-          <label>Enter the message:-</label>
-          <textarea
-            className="form-control"
-            id="text1"
-            name="content"
-            rows="4"
-            required
-            onChange={(e) => setMessage(e.target.value)}
-          ></textarea>
-        </div>
-        <div className="form-group">
           <label>Upload the image:-</label>
           <input
             type="file"
@@ -96,22 +60,12 @@ const EncryptionScreen = () => {
             id="fileUpload"
             name="file"
             accept="image/*"
-            onChange={uploadImageHandler}
             required
           />
           <small className="form-text text-muted">
             Image in which data needs to be encoded.
           </small>
           <br></br>
-          <div
-            className="alert alert-danger"
-            role="alert"
-            id="alert"
-            style={{ display: "none" }}
-          >
-            Text is too lengthy to be encoded. Please choose a higher resolution
-            image.
-          </div>
           <div style={{ textAlign: "center" }}>
             <input
               className="btn btn-primary button"
@@ -126,4 +80,4 @@ const EncryptionScreen = () => {
   );
 };
 
-export default EncryptionScreen;
+export default DecryptionScreen;

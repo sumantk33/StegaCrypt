@@ -14,10 +14,6 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/test', methods=['GET'])
-def test():
-    return 'Hello'
-
 @app.route('/how_to_use')
 def howto():
     return render_template('how_to_use.html')
@@ -48,10 +44,7 @@ def en_complete():
             key_received = 'msritcodes'
 
         encrypted_msg = encrypt(key_received, msg_received)
-        name = encode(encrypted_msg,image)
-        new_img = name
-        #return render_template('encrypt_comp.html', msg = msg_received , key = encrypted_msg, image_name = new_img)
-        
+        name = encode(encrypted_msg,image)        
         UPLOAD_FOLDER = 'static/temp'
         app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  
         return send_from_directory(app.config['UPLOAD_FOLDER'], name, as_attachment=True)        

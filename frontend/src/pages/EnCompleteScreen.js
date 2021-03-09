@@ -7,8 +7,7 @@ import "./styles/EnCompleteScreen.css";
 const EnCompleteScreen = () => {
   return (
     <div className="formJumbo">
-      <h1 className="display-4">Done!!</h1>
-      <h1 class="display-4">Fail!!</h1>
+      <h1 className="display-4">Done!!</h1> *<h1 class="display-4">Fail!!</h1>
       <div className="holder">
         <Alert
           status="success"
@@ -34,7 +33,14 @@ const EnCompleteScreen = () => {
           downloading the image.
         </small>
         <br></br>
-        <img src={logo} width="100%" height="50%" />
+        <img src={logo} width="100%" height="100%" />
+        <div className="button_div">
+          <a href="" download="encoded_img.png">
+            <button type="button" class="btn btn-info button">
+              Download
+            </button>
+          </a>
+        </div>
       </div>
     </div>
   );

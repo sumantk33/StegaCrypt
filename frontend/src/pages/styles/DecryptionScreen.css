@@ -6,7 +6,7 @@
 .keys {
   display: flex;
   flex-direction: row;
-  /* margin-bottom: 2%; */
+  margin-bottom: 2%;
 }
 
 .radioButtons {
@@ -27,4 +27,9 @@
   height: 50px;
   font-size: 20px;
   border-radius: 5px;
+}
+
+.button {
+  background-color: #0269d9;
+  height: 5%;
 }
