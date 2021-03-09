@@ -1,7 +1,7 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify, send_from_directory
 from PIL import Image
 import os
-import random
+import random 
 
 from utils.encrypt import encrypt
 from utils.decrypt import decrypt
@@ -10,10 +10,13 @@ from utils.decode import decode
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/test', methods=['GET'])
+def test():
+    return 'Hello'
 
 @app.route('/how_to_use')
 def howto():
@@ -35,37 +38,45 @@ def enc():
 def en_complete():
     if request.method=='GET':
         return render_template('encrypt_comp.html')
-    if request.method=='POST':    
 
+    if request.method=='POST':    
         filename = request.files['file']
         key_received = request.form['Key']
         image = Image.open(filename, 'r')
         msg_received = request.form['content']
         if key_received == "":
             key_received = 'msritcodes'
+
         encrypted_msg = encrypt(key_received, msg_received)
         name = encode(encrypted_msg,image)
         new_img = name
-        return render_template('encrypt_comp.html', msg = msg_received , key = encrypted_msg, image_name = new_img)
+        #return render_template('encrypt_comp.html', msg = msg_received , key = encrypted_msg, image_name = new_img)
+        
+        UPLOAD_FOLDER = 'static/temp'
+        app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  
+        return send_from_directory(app.config['UPLOAD_FOLDER'], name, as_attachment=True)        
+          
 
 @app.route('/decryption')
 def dec():
     return render_template('decrypt.html')
-    
+
 @app.route('/de_complete', methods=['GET', 'POST'])
 def de_complete():
     if request.method=='GET':
         return render_template('encrypt_comp.html')
+
     if request.method=='POST':    
         filename = request.files['file']
         key_received = request.form['Key']
         image = Image.open(filename, 'r')
         if key_received == "":
             key_received = 'msritcodes'
+
         received_msg = decode(image)
         msg = decrypt(key_received, received_msg)
         return render_template('decrypt_comp.html', dec_msg = msg)	
 
 
-if __name__ == '__main__':
-   app.run(threaded=True, port=5000)
+if __name__ == '__main__': 
+   app.run(threaded=True, port=5000, debug=True)

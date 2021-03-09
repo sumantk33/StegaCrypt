@@ -1,13 +1,36 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Radio, RadioGroup } from "react-radio-group";
 
 import "./styles/EncryptionScreen.css";
 
 const EncryptionScreen = () => {
   const [isCustom, setIsCustom] = useState(false);
+  const [message, setMessage] = useState("");
+  const [key, setKey] = useState("");
 
   const uploadImageHandler = (e) => {
-    const file = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = function (e) {
+      var image = new Image();
+      image.src = e.target.result;
+
+      image.onload = function () {
+        var height = this.height;
+        var width = this.width;
+        var alert = document.getElementById("alert");
+        if ((height * width) / 3 < message.length) {
+          alert.style.display = "block";
+        } else {
+          alert.style.display = "none";
+        }
+      };
+    };
+  };
+
+  const handle = async () => {
+    console.log(message);
   };
 
   return (
@@ -43,6 +66,7 @@ const EncryptionScreen = () => {
               name="Key"
               aria-describedby="emailHelp"
               placeholder="Enter Key"
+              onChange={(e) => setKey(e.target.value)}
             />
             <small id="KeyHelp" className="form-text text-muted">
               Enter personal key for encryption(<b>Caution:</b>
@@ -61,6 +85,7 @@ const EncryptionScreen = () => {
             name="content"
             rows="4"
             required
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </div>
         <div className="form-group">
@@ -78,12 +103,22 @@ const EncryptionScreen = () => {
             Image in which data needs to be encoded.
           </small>
           <br></br>
-          <div className="alert alert-danger" role="alert" id="alert">
+          <div
+            className="alert alert-danger"
+            role="alert"
+            id="alert"
+            style={{ display: "none" }}
+          >
             Text is too lengthy to be encoded. Please choose a higher resolution
             image.
           </div>
           <div style={{ textAlign: "center" }}>
-            <input className="btn btn-primary" type="submit" value="Submit" />
+            <input
+              className="btn btn-primary"
+              type="submit"
+              value="Submit"
+              onClick={handle}
+            />
           </div>
         </div>
       </div>
