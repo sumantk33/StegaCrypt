@@ -4,10 +4,12 @@ import { Radio, RadioGroup } from "react-radio-group";
 
 import "./styles/EncryptionScreen.css";
 
-const EncryptionScreen = () => {
+const EncryptionScreen = ({ history }) => {
   const [isCustom, setIsCustom] = useState(false);
   const [message, setMessage] = useState("");
   const [key, setKey] = useState("");
+  const [imageFile, setImageFile] = useState({});
+  const [image, setImage] = useState({ 1: 0 });
 
   const uploadImageHandler = (e) => {
     var reader = new FileReader();
@@ -27,10 +29,41 @@ const EncryptionScreen = () => {
         }
       };
     };
+
+    const file = e.target.files[0];
+    setImage({ 1: 1 });
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("Key", key);
+    formData.append("content", message);
+    setImageFile(formData);
   };
 
   const handle = async () => {
-    console.log(message);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+
+    if (message === "" || image[1] === 0) {
+      alert("Please fill out all the details");
+    } else {
+      const res = await axios.post("/en_complete", imageFile, config);
+      console.log(res);
+      if (res.status === 200) {
+        history.push({
+          pathname: "/en_complete",
+          state: {
+            message: message,
+            encryptedText: res.data.text,
+            name: res.data.name,
+          },
+        });
+      } else {
+        alert("Something went wrong please try again");
+      }
+    }
   };
 
   return (
@@ -58,7 +91,7 @@ const EncryptionScreen = () => {
             </div>
           </RadioGroup>
         </div>
-        {isCustom ? (
+        {isCustom && (
           <div className="form-group" id="dvtext">
             <input
               type="text"
@@ -74,8 +107,6 @@ const EncryptionScreen = () => {
               phase).
             </small>
           </div>
-        ) : (
-          <></>
         )}
         <div className="form-group">
           <label>Enter the message:-</label>
