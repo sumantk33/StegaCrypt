@@ -5,37 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StegaCrypt</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename = 'icon.jpg') }}">
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
     
-    <style>
-        body {
-            background: url('static/base.jpg') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-        hr {
-            background-color: #635C5C;
-            height: 0px;
-            border: none;
-            opacity: 0.35;
-        }
-        #mainbar {
-            font-family: 'Bree Serif', serif;
-            width: initial;
-        }
-
-        #hacker {
-            font-size: 35px;
-            margin-left: 70px;
-        }
-
-        #navbarsExample09 {
-            font-size: 19px;
-        }
-    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="icon" href="static\images.png" type="image/png">
@@ -46,27 +19,26 @@
 <body>
 
     <div class="container" id="mainbar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent rounded">
-            <a class="navbar-brand" href="/" id="hacker">StegaCrypt</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
-                aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent Navbar rounded">
+            <a class="navbar-brand" href="/"> <span class="titleHolder">StegaCrypt</span> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarsExample09">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/how_to_use">How to use</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                </ul>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/how_to_use">How to Use</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+              </ul>
             </div>
-        </nav>
+          </nav>
     </div>
     <hr>
     <div class="container">
