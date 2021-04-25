@@ -8,15 +8,15 @@
 {% block body %}
 
 <div class="jumbotron">
-    <div class="col-sm-8 mx-auto">
+    <div class="col-sm-10 mx-auto">
         <h1 class="display-4">Encryption</h1><br>
         <form id="up-form" action="/en_complete" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
+            <div class="form-group buttons">
                 <label for="KeyInput" style="padding-right: 1em;">Key:- </label>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Default" value="option1"
                         onclick="ShowHideDiv()" checked>
-                    <label class="form-check-label" for="DefaultKey" style="font-weight: normal;">Default Key</label>
+                   <label class="form-check-label" for="DefaultKey" style="font-weight: normal;">Default Key</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Custom" value="option2"

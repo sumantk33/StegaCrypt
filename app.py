@@ -47,7 +47,7 @@ def en_complete():
         name = encode(encrypted_msg,image)        
         UPLOAD_FOLDER = 'static/temp'
         app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  
-        return send_from_directory(app.config['UPLOAD_FOLDER'], name, as_attachment=True)        
+        return render_template('encrypt_comp.html', msg = msg_received , image_name = name)        
           
 
 @app.route('/decryption')
