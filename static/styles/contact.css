@@ -17,6 +17,10 @@
     font-size: 20px;
 }
 
+#email {
+    font-style: italic;
+}
+
 @media screen and (max-width: 800px) {
     .jumbotron h1 {
         font-size: 40px;
