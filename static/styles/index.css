@@ -1,0 +1,53 @@
+.jumbotron {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    text-align: center;
+}
+
+.jumbotron h1 {
+    font-size: 60px;
+    font-family: 'PT Serif', serif;
+    color: white;
+}
+
+.jumbotron p {
+    color: white;
+    font-size: 18px;
+    font-family: 'Belgrano', serif;
+}
+
+.btn-primary {
+    margin-right: 30px;
+}
+
+#button1 {
+    background-color: #fff;
+    color: #1B1F3B;
+}
+
+#button2 {
+    background-color: #1B1F3B;
+    color: white;
+}
+
+#button1, #button2 {
+    width: 200px;
+    border-radius: 10px;
+    height: 60px;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    transition: all 0.4s ease 0s;
+    box-shadow: 0px 7px 20px rgba(255, 255, 255, 0.3);
+}
+
+#button1:hover,
+#button2:hover {
+    background-color: #DB1F1F;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}

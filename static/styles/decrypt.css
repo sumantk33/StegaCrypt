@@ -1,0 +1,34 @@
+body {
+    color: white;
+}
+
+.jumbotron {
+    color: black;
+    width: 850px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.jumbotron h1 {
+    text-align: center;
+    font-family: 'PT Serif', serif;
+}
+
+.btn {
+    width: 180px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+.jumbotron label {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.form-check label {
+    font-size: 15px;
+}

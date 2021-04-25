@@ -1,0 +1,17 @@
+.jumbotron {
+    color: white;
+    background: none;
+    width: 1000px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -6%);
+    text-align: center;
+}
+.jumbotron h1 {
+    text-align: center;
+    font-family: 'PT Serif', serif;
+}
+.jumbotron p{
+    font-family: 'Rosario', sans-serif;
+    font-size: 20px;
+}

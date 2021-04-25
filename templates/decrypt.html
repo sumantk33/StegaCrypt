@@ -2,42 +2,7 @@
 
 {% block head %}
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
-<style>
-    body {
-        color: white;
-    }
-
-    .jumbotron {
-        color: black;
-        width: 850px;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0);
-    }
-
-    .jumbotron h1 {
-        text-align: center;
-        font-family: 'PT Serif', serif;
-    }
-
-    .btn {
-        width: 180px;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0);
-        font-size: 20px;
-        border-radius: 8px;
-    }
-
-    .jumbotron label {
-        font-size: 17px;
-        font-weight: bold;
-    }
-
-    .form-check label {
-        font-size: 15px;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/decrypt.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -71,11 +36,5 @@
         </form>
     </div>
 </div>
-<script>
-    function ShowHideDiv() {
-        var chkYes = document.getElementById("Custom");
-        var dvtext = document.getElementById("dvtext");
-        dvtext.style.display = chkYes.checked ? "block" : "none";
-    }
-</script>
+<script src="/static/scripts/encrypt.js"></script>
 {% endblock %}

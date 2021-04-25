@@ -3,25 +3,7 @@
 {% block head %}
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rosario&display=swap" rel="stylesheet">
-<style>
-    .jumbotron {
-        color: white;
-        background: none;
-        width: 1000px;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0%);
-    }
-    .jumbotron h1 {
-        text-align: center;
-        font-family: 'PT Serif', serif;
-    }
-    .jumbotron p{
-        font-family: 'Rosario', sans-serif;
-        text-align: center;
-        font-size: 20px;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/contact.css') }}">
 {% endblock %}
 
 {% block body %}
