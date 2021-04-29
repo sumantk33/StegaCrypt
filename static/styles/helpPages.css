@@ -1,14 +1,14 @@
 .jumbotron {
     color: white;
     background: none;
-    width: 1000px;
+    width: 95vw;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -6%);
     text-align: center;
 }
 .jumbotron h1 {
-    text-align: center;
+    text-align: center; 
     font-family: 'PT Serif', serif;
     font-size: 5vw;
 }
