@@ -1,0 +1,23 @@
+body {
+    background: url('/static/base.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.Navbar {
+    color: #fff;
+    font-family: 'Bree Serif', serif;
+    width: initial;
+}
+
+.titleHolder {
+    font-size: 1.8rem;
+}
+ 
+hr {
+    background-color: #635C5C;
+    height: 0px;
+    border: none;
+    opacity: 0.35;
+}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/de_complete.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="col-sm-10 mx-auto">
+        
+        {% if dec_msg %}
+        <h1 class="display-4">Done!!</h1><br>
+        <div class="alert alert-success" role="alert">
+            The message was successfully decrypted.
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="Key">Time taken:-</label>
+                <input type="text" class="form-control" value="{{duration}} seconds">
+            </div>
+            <div class="form-group">
+                <label for="EncryptedMessage">Decrypted Message:-</label>
+                <textarea class="form-control" id="text1" rows="8">{{dec_msg}}</textarea>
+            </div>
+        </form>
+        {% else %}
+        <h1 class="display-4">Fail!!</h1><br>
+        <div class="alert alert-danger" role="alert">
+            The process could not be completed. Check the information once again.
+        </div>
+
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
