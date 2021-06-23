@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, jsonify, send_from_d
 from PIL import Image
 import os
 import random 
+import time
 
 from utils.encrypt import encrypt
 from utils.decrypt import decrypt
@@ -36,6 +37,7 @@ def en_complete():
         return render_template('encrypt_comp.html')
 
     if request.method=='POST':    
+        start = time.time()
         filename = request.files['file']
         key_received = request.form['Key']
         image = Image.open(filename, 'r')
@@ -47,7 +49,8 @@ def en_complete():
         name = encode(encrypted_msg,image)        
         UPLOAD_FOLDER = 'static/temp'
         app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  
-        return render_template('encrypt_comp.html', msg = msg_received , image_name = name, enc_msg = encrypted_msg)        
+        end = time.time()
+        return render_template('encrypt_comp.html', msg = msg_received , image_name = name, enc_msg = encrypted_msg, duration = round(end-start, 2))        
           
 
 @app.route('/decryption')
@@ -60,6 +63,7 @@ def de_complete():
         return render_template('encrypt_comp.html')
 
     if request.method=='POST':    
+        start = time.time()
         filename = request.files['file']
         key_received = request.form['Key']
         image = Image.open(filename, 'r')
@@ -68,7 +72,8 @@ def de_complete():
 
         received_msg = decode(image)
         msg = decrypt(key_received, received_msg)
-        return render_template('decrypt_comp.html', dec_msg = msg)	
+        end = time.time()
+        return render_template('decrypt_comp.html', dec_msg = msg, duration = round(end-start, 2))	
 
 
 if __name__ == '__main__': 
